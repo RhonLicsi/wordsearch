@@ -11,13 +11,15 @@
       (format t "~a "(random-letter)))
     (format t "~%")))
 
-CC
+;; Set of Words
 (defvar word-set '("APPLE" "BANANA" "ORANGE" "GRAPE" "PINEAPPLE"))
 
+;; Space of the word
 (defun word-space (word)
   (loop for letter across word do (format t "~a " letter))
   (format t "~%"))
 
+;; Print of words
 (defun print-word (words)
   (loop for word in words
         do (word-space word)))
