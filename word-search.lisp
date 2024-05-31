@@ -1,14 +1,15 @@
 (in-package :word-search)
 
-(defparameter *grid* #2A(
-                         (#\W #\E #\L #\C #\O #\M #\E)
-                         (#\T #\O #\T #\H #\E #\G #\A)
-                         (#\W #\O #\R #\D #\S #\E #\A)
-                         (#\R #\C #\H #\G #\A #\M #\E)
-                         (#\E #\X #\A #\M #\P #\L #\E)
-                         ))
+;; Generates a random letters
+(defun random-letter ()
+  (aref "ABCDEFGHIJKLMNOPQRSTUVWXYZ" (random 26)))
 
-(defparameter *words* '("WELCOME" "TO" "THE" "WORD" "SEARCH" "GAME" "EXAMPLE"))
+;; Creating a grid
+(defun grid ()
+  (dotimes (i 10)
+    (dotimes (j 10)
+      (format t "~a "(random-letter)))
+    (format t "~%")))
 
-(defun foo ()
-  (format t "hello"))
+
+
