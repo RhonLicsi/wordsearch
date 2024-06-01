@@ -38,7 +38,10 @@
 ;; To Print
 (defun print-all ()
   (dolist (word *word-set*)
-    (format t "~a~%" (fill-random word))))
+    (let ((filled-word (fill-random word)))
+      (format t "~{~a ~}~%" (coerce filled-word 'list))))) ; Converts the string into list
+
+
 
 
 
