@@ -12,7 +12,7 @@
     (format t "~%")))
 
 ;; Set of Words
-(defvar word-set '("APPLE" "BANANA" "ORANGE" "GRAPE" "PINEAPPLE"))
+(defvar *word-set* '("APPLE" "BANANA" "ORANGE" "GRAPE" "PINEAPPLE"))
 
 ;; Space of the word
 (defun word-space (word)
@@ -23,6 +23,27 @@
 (defun print-word (words)
   (loop for word in words
         do (word-space word)))
+
+;;;;;;;;;;;;;;;;;;;;;;
+
+;; Words with random letters
+(defun fill-random (word)
+  (let* ((count (- 10 (length word)))
+         (fcount (random (1+ count))))
+    (concatenate 'string
+                 (loop repeat fcount collect (random-letter)) ; For the front of the word
+                 word
+                 (loop repeat (- count fcount) collect (random-letter))))) ; For the back of the word
+
+;; To Print
+(defun print-all ()
+  (dolist (word *word-set*)
+    (format t "~a~%" (fill-random word))))
+
+
+
+
+
 
 
 
