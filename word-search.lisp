@@ -29,7 +29,7 @@
 ;; Words with random letters
 (defun fill-random (word)
   (let* ((count (- 10 (length word)))
-         (fcount (random (1+ count))))
+         (fcount (random (+ 1 count))))
     (concatenate 'string
                  (loop repeat fcount collect (random-letter)) ; For the front of the word
                  word
