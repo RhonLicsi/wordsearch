@@ -6,7 +6,7 @@
 
 ;; Creating a grid
 (defun grid ()
-  (dotimes (i 10)
+  (dotimes (i 5)
     (dotimes (j 10)
       (format t "~a "(random-letter)))
     (format t "~%")))
@@ -37,9 +37,13 @@
 
 ;; To Print
 (defun print-all ()
-  (dolist (word *word-set*)
-    (let ((filled-word (fill-random word)))
-      (format t "~{~a ~}~%" (coerce filled-word 'list))))) ; Converts the string into list
+  (let ((grid (grid))) ; Generate the grid
+    (dolist (word *word-set*) ; Iterate over each word in *word-set*
+      (let ((filled-word (fill-random word))) ; Fill the word randomly
+        (format t "~{~a ~}~%" (coerce filled-word 'list)))) ; Print the filled word
+    (format t "~a" grid))) ; Print the grid after the words
+
+
 
 
 
