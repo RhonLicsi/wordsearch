@@ -4,6 +4,11 @@
 (defun random-letter ()
   (aref "ABCDEFGHIJKLMNOPQRSTUVWXYZ" (random 26)))
 
+;; Create a row
+(defun row-random ()
+  (loop repeat 10
+      do (format t "~a "(random-letter))))
+
 ;; Creating a grid
 (defun grid ()
   (dotimes (i 5)
@@ -44,8 +49,19 @@
     (format t "~a" grid))) ; Print the grid after the words
 
 
+;; Trial
+(defun teey ()
+  (let ((num-loops (+ 1 (random 2))))
+    (loop (()(word word-set)
+               (let ((filled-word (fill-random word)))
+                 (format t "~{~a ~}~%" (coerce filled-word 'list)))))))
 
-
+;;
+(defun count-words (word-set)
+  (let ((count 0))
+    (do ((i 0 (+ 1 i)))
+        ((>= i (length word-set)) count)
+      (incf count))))
 
 
 
