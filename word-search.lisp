@@ -4,11 +4,6 @@
 (defun random-letter ()
   (aref "ABCDEFGHIJKLMNOPQRSTUVWXYZ" (random 26)))
 
-;; Create a row
-(defun row-random ()
-  (loop repeat 10
-      do (format t "~a "(random-letter))))
-
 ;; Creating a grid
 (defun grid ()
   (dotimes (i 5)
@@ -17,7 +12,7 @@
     (format t "~%")))
 
 ;; Set of Words
-(defvar *word-set* '("APPLE" "BANANA" "ORANGE" "GRAPE" "PINEAPPLE"))
+(defvar *word-set* '("APPLE" "BANANA" "ORANGE" "GRAPE" "KIWI"))
 
 ;; Space of the word
 (defun word-space (word)
@@ -28,8 +23,6 @@
 (defun print-word (words)
   (loop for word in words
         do (word-space word)))
-
-;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Words with random letters
 (defun fill-random (word)
@@ -48,20 +41,32 @@
         (format t "~{~a ~}~%" (coerce filled-word 'list)))) ; Print the filled word
     (format t "~a" grid))) ; Print the grid after the words
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Trial
-(defun teey ()
-  (let ((num-loops (+ 1 (random 2))))
-    (loop (()(word word-set)
-               (let ((filled-word (fill-random word)))
-                 (format t "~{~a ~}~%" (coerce filled-word 'list)))))))
+;;;Trial stages
 
-;;
-(defun count-words (word-set)
-  (let ((count 0))
-    (do ((i 0 (+ 1 i)))
-        ((>= i (length word-set)) count)
-      (incf count))))
+;; Create a row
+(defun row-random ()
+  (loop repeat 10
+      do (format t "~a "(random-letter))))
+
+
+;; Another loop
+(defun grid ()
+  (loop repeat 10
+        collect (loop repeat 10
+                      collect (random-letter))))
+
+;; Inserting words in grid random
+(defun insert-words (grid)
+  (dolist (word *word-set*)
+    (let* ((len (length word))
+           (row (random (- 10 len))))
+      (loop
+            do (let (())))))
+  grid)
+
+
 
 
 
