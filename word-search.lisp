@@ -12,7 +12,7 @@
     (format t "~%")))
 
 ;; Set of Words
-(defvar *word-set* '("APPLE" "BANANA" "ORANGE" "GRAPE" "KIWI"))
+(defvar *word-set* '("APPLE" "BANANA" "ORANGE" "GRAPES" "KIWI"))
 
 ;; Space of the word
 (defun word-space (word)
@@ -45,26 +45,45 @@
 
 ;;;Trial stages
 
-;; Create a row
-(defun row-random ()
-  (loop repeat 10
-      do (format t "~a "(random-letter))))
+;; Container of grid with a random letter
+(defparameter *grid* (make-array '(10 10) :initial-element #\space))
+(defvar *word-set* '("APPLE" "BANANA" "ORANGE" "GRAPES" "KIWI"))
 
+(defun random-letter ()
+  (aref "ABCDEFGHIJKLMNOPQRSTUVWXYZ" (random 26)))
 
-;; Another loop
-(defun grid ()
-  (loop repeat 10
-        collect (loop repeat 10
-                      collect (random-letter))))
+(defun horizontal (word)
+  (let* ((len (length word))
+         (max-col (- 10 len))
+         (start-col (random (+ 1 max-col)))
+         (start-row (random 10)))
+    (dotimes (i len)
+      (setf (aref *grid* start-row (+ start-col i)) (char word i)))
+    (format t "Placed horizontal word ~a at row ~a, column ~a~%" word start-row start-col)))
 
-;; Inserting words in grid random
-(defun insert-words (grid)
+(defun clear-grid ()
+  (setf *grid* (make-array '(10 10) :initial-element #\space)))
+
+(defun place-words ()
+  (clear-grid)  ; Clear the grid before placing new words
   (dolist (word *word-set*)
-    (let* ((len (length word))
-           (row (random (- 10 len))))
-      (loop
-            do (let (())))))
-  grid)
+    (horizontal word)))
+
+(defun print-grid ()
+  (dotimes (i 10)
+    (dotimes (j 10)
+      (if (char= (aref *grid* i j) #\space)
+          (format t "~a " (random-letter))
+          (format t "~a " (aref *grid* i j))))
+    (format t "~%")))
+
+(place-words) ;;Reset
+(print-grid)
+
+
+
+
+
 
 
 
