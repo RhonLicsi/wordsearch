@@ -47,7 +47,7 @@
 
 ;; Container of grid with a random letter
 (defparameter *grid* (make-array '(10 10) :initial-element #\space))
-(defvar *word-set* '("APPLE" "BANANA" "ORANGE" "GRAPES" "KIWI"))
+(defparameter *word-set* '("ISO" "RAZE" "YORU" "JETT" "REYNA"))
 
 (defun random-letter ()
   (aref "ABCDEFGHIJKLMNOPQRSTUVWXYZ" (random 26)))
