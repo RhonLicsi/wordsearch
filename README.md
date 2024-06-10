@@ -8,7 +8,7 @@ This package provides functions to generate a word search puzzle grid, place wor
 ## How it works
 1. Clone or download this repository to your local machine.
 2. To use this package, load it into your Lisp environment and call the provided functions.
-  - (place-words) It generates the word search grid
+  - (place-words) It puts the words into the grid
   - (print-grid)  It prints the grid
   - (search-word "WORD") Search for the word "WORD" in the grid
 
